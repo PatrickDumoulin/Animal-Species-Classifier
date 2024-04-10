@@ -3,11 +3,52 @@
   "DataSource": {
     "Type": "Folder",
     "Version": 1,
-    "FolderPath": "C:\\Users\\Goglu\\source\\repos\\VeilleTechnoTP2V2\\Animals"
+    "FolderPath": "E:\\Ecole\\AEC Programmation\\Bloc 5\\Veille Techno\\TP2\\VeilleTechnoTP2V2\\Animals"
   },
   "Environment": {
     "Type": "LocalCPU",
     "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ImageClassificationMulti",
+        "Score": 0.84810126582278478,
+        "RuntimeInSeconds": 122.412,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2",
+          "e0": {
+            "OutputColumnName": "Label",
+            "InputColumnName": "Label",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e1": {
+            "LabelColumnName": "Label",
+            "ScoreColumnName": "Score",
+            "FeatureColumnName": "ImageSource",
+            "Arch": "ResnetV250",
+            "BatchSize": 10,
+            "Epoch": 200
+          },
+          "e2": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "MapValueToKey",
+      "e1": "ImageClassificationMulti",
+      "e2": "MapKeyToValue"
+    },
+    "Schema": "e0 * e1 * e2",
+    "MetricName": "MicroAccuracy",
+    "ModelFilePath": "E:\\Ecole\\AEC Programmation\\Bloc 5\\Veille Techno\\TP2\\VeilleTechnoTP2V3\\VeilleTechnoTP2V2\\MLModel1.mlnet"
   },
   "Type": "TrainingConfig",
   "Version": 5,
@@ -15,8 +56,7 @@
     "Version": 2,
     "Subsampling": false,
     "Type": "ClassificationTrainingOption",
-    "TrainingTime": 0,
-    "OptimizeMetric": "MicroAccuracy",
+    "TrainingTime": 2147483647,
     "ValidationOption": {
       "Version": 0,
       "Type": "TrainValidateSplitValidationOption",
