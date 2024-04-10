@@ -48,7 +48,7 @@ namespace VeilleTechnoTP2V2
         }
 
         /// <summary>
-        /// Retrains model using the pipeline generated as part of the training process.
+        /// Retrain model using the pipeline generated as part of the training process.
         /// </summary>
         /// <param name="mlContext"></param>
         /// <param name="trainData"></param>
@@ -60,7 +60,6 @@ namespace VeilleTechnoTP2V2
 
             return model;
         }
-
 
         /// <summary>
         /// build the pipeline that is used from model builder. Use this function to retrain model.

@@ -127,6 +127,5 @@ namespace VeilleTechnoTP2V2
             var predEngine = PredictEngine.Value;
             return predEngine.Predict(input);
         }
-
     }
 }
