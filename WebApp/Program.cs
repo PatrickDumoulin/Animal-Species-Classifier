@@ -13,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput>()
     .FromFile("MLModel1.mlnet");
 
+builder.Services.AddCors();
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
@@ -21,12 +23,20 @@ builder.Services.AddSwaggerGen(c =>
 });
 var app = builder.Build();
 
+
+
 app.UseSwagger();
 
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
 });
+
+// global cors policy
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true).WithOrigins("https://localhost:3000")); // Allow only this origin can also have multiple origins separated with comma
 
 // Define prediction route & handler
 app.MapPost("/predict",
@@ -35,6 +45,18 @@ app.MapPost("/predict",
         var input = new MLModel1.ModelInput()
         {
             ImageSource = File.ReadAllBytes(imagePath),
+        };
+
+        return await Task.FromResult(predictionEnginePool.Predict(input));
+    });
+
+// Route qui va seulement recevoir les données de l'images
+app.MapPost("/predictImageSource",
+    async (PredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput> predictionEnginePool, byte[] imageSource) =>
+    {
+        var input = new MLModel1.ModelInput()
+        {
+            ImageSource = imageSource,
         };
 
         return await Task.FromResult(predictionEnginePool.Predict(input));
