@@ -7,6 +7,7 @@ using Microsoft.ML.Data;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 // Configure app
 var builder = WebApplication.CreateBuilder(args);
@@ -52,11 +53,19 @@ app.MapPost("/predict",
 
 // Route qui va seulement recevoir les données de l'images
 app.MapPost("/predictImageSource",
-    async (PredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput> predictionEnginePool, byte[] imageSource) =>
+    async (PredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput> predictionEnginePool, IFormFile file) =>
     {
+        byte[] fileContent;
+        using (var ms = new MemoryStream())
+        {
+            file.CopyTo(ms);
+            var fileBytes = ms.ToArray();
+            fileContent = fileBytes;
+        }
+
         var input = new MLModel1.ModelInput()
         {
-            ImageSource = imageSource,
+            ImageSource = fileContent,
         };
 
         return await Task.FromResult(predictionEnginePool.Predict(input));

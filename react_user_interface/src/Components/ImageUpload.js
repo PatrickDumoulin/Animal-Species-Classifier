@@ -7,18 +7,22 @@ function ImageUpload(){
     function handleImage(e){
         console.log(e.target.files)
         setImage(e.target.files[0])
-        console.log(image)
     }
     function handleApi(){
-        const formData = new FormData()
+        var formData = new FormData()
         formData.append('image', image)
+        checkForm(formData, image)
         axios.post('https://localhost:53770/predictImageSource',formData).then((res)=>{
             console.log(res)
         })
     }
+    function checkForm(f,i){
+        console.log(f)
+        console.log(i)
+    }
     return(
         <div>
-            <input type="file" name="file" onChange={(handleImage)}/>
+            <input type="file" name="file" accept="image/*" onChange={(handleImage)}/>
             <button onClick={handleApi}>submit</button>
         </div>
     )
