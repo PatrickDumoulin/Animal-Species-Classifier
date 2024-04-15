@@ -22,9 +22,12 @@ function ImageUploadForm() {
 
   const uploadImage = async (formData) => {
     try {
-      const response = await fetch('http://localhost:65253/predict', {
+      const response = await fetch('https://localhost:53770/predictImageSource', {
         method: 'POST',
         body: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
       if (response.ok) {
         const data = await response.json();
@@ -42,7 +45,7 @@ function ImageUploadForm() {
       <form onSubmit={handleSubmit}>
         <label>
           Upload image:
-          <input type="file" accept="image/*" onChange={handleFileInput} />
+          <input type="file" accept="image/*" encType="multipart/form-data" onChange={handleFileInput} />
         </label>
         <button type="submit">Envoyer</button>
       </form>
