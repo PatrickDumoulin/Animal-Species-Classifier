@@ -12,7 +12,7 @@ function ImageUpload(){
         var formData = new FormData()
         formData.append('image', image)
         checkForm(formData, image)
-        axios.post('https://localhost:53273//api/Prediction',formData, { headers: 
+        axios.post('https://localhost:7018/api/Prediction',formData, { headers: 
         {'Content-Type': 'multipart/form-data'},
         }).then((res)=>{
             console.log(res)

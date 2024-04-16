@@ -55,7 +55,7 @@ app.MapPost("/predict",
 app.MapPost("/predictImageSource",
     async (PredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput> predictionEnginePool, IFormFile file) =>
     {
-        /*
+        
         byte[] fileContent;
         using (var ms = new MemoryStream())
         {
@@ -63,12 +63,12 @@ app.MapPost("/predictImageSource",
             var fileBytes = ms.ToArray();
             fileContent = fileBytes;
         }
-        */
+        
         var input = new MLModel1.ModelInput()
         {
-            ImageSource = File.ReadAllBytes(@"C:Users\Goglu\source\repos\VeilleTechnoTP2V2\Animals\Fox\01c58020-9388-11ee-8319-bdafcbf63490.jpg"),
+            ImageSource = fileContent,
         };
-
+        
         return await Task.FromResult(predictionEnginePool.Predict(input));
     });
 

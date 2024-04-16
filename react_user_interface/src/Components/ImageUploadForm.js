@@ -22,13 +22,14 @@ function ImageUploadForm() {
 
   const uploadImage = async (formData) => {
     try {
-      const response = await fetch('https://localhost:53273/api/Prediction', {
+      const response = await fetch('https://localhost:7018/api/Prediction', {
         method: 'POST',
         body: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log(response)
       if (response.ok) {
         const data = await response.json();
         setUploadStatus(`Upload réussi: ${data.predictedLabel}`);
