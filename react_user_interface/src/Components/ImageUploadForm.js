@@ -22,7 +22,7 @@ function ImageUploadForm() {
 
   const uploadImage = async (formData) => {
     try {
-      const response = await fetch('https://localhost:53770/api/predict', {
+      const response = await fetch('https://localhost:53273/api/Prediction', {
         method: 'POST',
         body: formData,
         headers: {
