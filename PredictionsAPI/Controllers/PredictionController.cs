@@ -20,7 +20,7 @@ namespace PredictionsAPI.Controllers
             _logger = logger;
         }
 
-        // Endpoint utilisé par le UI React
+        // Endpoint utilisé par le UI React.
         public ActionResult Post(IFormFile fileContent)
         {
             if (fileContent == null)
