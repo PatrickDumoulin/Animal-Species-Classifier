@@ -14,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput>()
     .FromFile("MLModel1.mlnet");
 
+
 builder.Services.AddCors();
 
 builder.Services.AddEndpointsApiExplorer();

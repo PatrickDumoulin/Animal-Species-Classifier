@@ -10,7 +10,7 @@ function ImageUpload(){
     }
     function handleApi(){
         var formData = new FormData()
-        formData.append('image', image)
+        formData.append('fileContent', image)
         checkForm(formData, image)
         axios.post('https://localhost:7018/api/Prediction',formData, { headers: 
         {'Content-Type': 'multipart/form-data'},
