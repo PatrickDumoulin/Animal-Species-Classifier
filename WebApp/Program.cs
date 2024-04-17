@@ -54,7 +54,7 @@ app.MapPost("/predict",
 
 // Route qui va seulement recevoir les données de l'images IFormFile ? MultipartFormDataContent
 app.MapPost("/predictImageSource",
-    async (PredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput> predictionEnginePool, IFormFile file) =>
+    async (PredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput> predictionEnginePool, [FromForm]IFormFile file) =>
     {
         
         byte[] fileContent;

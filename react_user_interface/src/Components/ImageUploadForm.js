@@ -12,7 +12,7 @@ function ImageUploadForm() {
     e.preventDefault();
     if (selectedFile) {
       const formData = new FormData();
-      formData.append('file', selectedFile);
+      formData.append('fileContent', selectedFile);
       setUploadStatus('Envoi en cours...');
       await uploadImage(formData);
     } else {

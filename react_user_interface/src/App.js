@@ -7,9 +7,9 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>Upload d'image 1</h1>
+      <h1>Upload d'image Form</h1>
       <ImageUploadForm />
-      <h1>Upload d'image 2</h1>
+      <h1>Upload d'image Axios Fonctionnel</h1>
       <ImageUpload />
     </div>
   );
