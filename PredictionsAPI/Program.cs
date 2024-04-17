@@ -4,6 +4,7 @@ using PredictionsAPI;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Injection des dependances
 builder.Services.AddPredictionEnginePool<MLModel.ModelInput, MLModel.ModelOutput>()
     .FromFile("MLModel.mlnet");
 builder.Services.AddControllers();
@@ -13,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// global cors policy
+// Global Cors Policy
 app.UseCors(x => x
     .AllowAnyMethod()
     .AllowAnyHeader()

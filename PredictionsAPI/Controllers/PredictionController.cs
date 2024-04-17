@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.ML;
 using System.Net;
 using System.Reflection.Metadata;
+using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PredictionsAPI.Controllers
 {
@@ -18,10 +20,17 @@ namespace PredictionsAPI.Controllers
             _logger = logger;
         }
 
+        // Endpoint utilisé par le UI React
         [HttpPost]
         public async Task<HttpResponseMessage> Post(IFormFile fileContent)
         {
-            byte[] fileData;
+            if(fileContent == null)
+            {
+                return await Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound));
+            }
+
+            // Transforme le fichier en byte
+            byte[] fileData;            
             using (var ms = new MemoryStream())
             {
                 fileContent.CopyTo(ms);
@@ -29,16 +38,23 @@ namespace PredictionsAPI.Controllers
                 fileData = fileBytes;
             }
 
+            // Créé instance du modèle
             var input = new MLModel.ModelInput()
             {
                 ImageSource = fileData,
             };
 
+            // Fait la prédiction de l'image
             var prediction = _predictionEnginePool.Predict(input);
 
             _logger.LogInformation($"Prediction : {prediction.PredictedLabel}");
 
-            return await Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK));
+            // Message qui retourne vers l'UI React
+            return await Task.FromResult(new HttpResponseMessage
+            {
+                Content = new StringContent(prediction.PredictedLabel, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK,
+            });
         }
     }
 }
