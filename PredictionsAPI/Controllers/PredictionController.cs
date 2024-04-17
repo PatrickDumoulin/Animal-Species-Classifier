@@ -21,16 +21,15 @@ namespace PredictionsAPI.Controllers
         }
 
         // Endpoint utilisé par le UI React
-        [HttpPost]
-        public async Task<HttpResponseMessage> Post(IFormFile fileContent)
+        public ActionResult Post(IFormFile fileContent)
         {
-            if(fileContent == null)
+            if (fileContent == null)
             {
-                return await Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound));
+                return NotFound();
             }
 
             // Transforme le fichier en byte
-            byte[] fileData;            
+            byte[] fileData;
             using (var ms = new MemoryStream())
             {
                 fileContent.CopyTo(ms);
@@ -49,12 +48,8 @@ namespace PredictionsAPI.Controllers
 
             _logger.LogInformation($"Prediction : {prediction.PredictedLabel}");
 
-            // Message qui retourne vers l'UI React
-            return await Task.FromResult(new HttpResponseMessage
-            {
-                Content = new StringContent(prediction.PredictedLabel, Encoding.UTF8, "application/json"),
-                StatusCode = HttpStatusCode.OK,
-            });
+            // Retourne un JsonResult qui envoie la prédiction au client
+            return Ok(prediction.PredictedLabel);
         }
     }
 }
