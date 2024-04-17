@@ -1,5 +1,4 @@
 import React from 'react';
-import ImageUploadForm from './Components/ImageUploadForm'
 import ImageUpload from './Components/ImageUpload'
 
 import './App.css';
@@ -7,9 +6,8 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>Upload d'image Form</h1>
-      <ImageUploadForm />
-      <h1>Upload d'image Axios Fonctionnel</h1>
+      <h1>Modèle de reconnaissance d'espèces animales</h1>
+      <h3>Veuillez télécharger une image d'animal</h3>
       <ImageUpload />
     </div>
   );

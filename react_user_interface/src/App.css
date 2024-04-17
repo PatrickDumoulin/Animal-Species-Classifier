@@ -1,38 +1,96 @@
-.App {
+/* App.css */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #edf2f7;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  color: #2b2d42;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+div {
+  
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.Prediction{
+  background-color: #fafafa;
+}
+
+input[type="file"] {
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  width: 94%;
+}
+
+button {
+  background-color: #3f51b5;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #1c1f4a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15);
 }
 
-@keyframes App-logo-spin {
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+p {
+  color: #2b2d42;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Ajoutez des transitions pour les inputs lorsqu'ils sont actifs ou en focus */
+input[type="file"]:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+/* Ajoutez un peu d'animation pour le texte de prédiction */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(5px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+p {
+  animation: fadeIn 1s ease;
 }

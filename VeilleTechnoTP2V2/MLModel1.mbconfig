@@ -56,7 +56,7 @@
     "Version": 2,
     "Subsampling": false,
     "Type": "ClassificationTrainingOption",
-    "TrainingTime": 0,
+    "TrainingTime": 2147483647,
     "OptimizeMetric": "MacroAccuracy",
     "ValidationOption": {
       "Version": 0,
