@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.ML;
 using System.Net;
 using System.Reflection.Metadata;
@@ -46,7 +47,12 @@ namespace PredictionsAPI.Controllers
             // Fait la prédiction de l'image
             var prediction = _predictionEnginePool.Predict(input);
 
+            // Logs
             _logger.LogInformation($"Prediction : {prediction.PredictedLabel}");
+            foreach (var score in prediction.Score)
+            {
+                _logger.LogInformation($"Log-loss reduction score : {score}");
+            }
 
             // Retourne un JsonResult qui envoie la prédiction au client
             return Ok(prediction.PredictedLabel);
