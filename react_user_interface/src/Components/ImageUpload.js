@@ -10,8 +10,11 @@ function ImageUpload() {
     }
 
     function handleApi() {
-        var formData = new FormData();
+        // Ajouter l'image au formulaire
+        var formData = new FormData();   
         formData.append('fileContent', image);
+
+        // Requette vers l'API
         axios.post('https://localhost:7018/api/Prediction', formData, {
             headers: { 'Content-Type': 'multipart/form-data' },
         }).then((res) => {
@@ -23,6 +26,7 @@ function ImageUpload() {
     }
 
     return (
+        // Formulaire
         <div class="Prediction">
             <input type="file" name="file" accept="image/*" onChange={handleImage} />
             <button onClick={handleApi}>Démarrer la prédiction</button>
