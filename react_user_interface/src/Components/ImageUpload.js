@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function ImageUpload() {
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(''); // Etat de l'image
     const [prediction, setPrediction] = useState(''); // Ajouter cet état pour la prédiction
 
     function handleImage(e) {

@@ -51,7 +51,7 @@ namespace PredictionsAPI.Controllers
             _logger.LogInformation($"Prediction : {prediction.PredictedLabel}");
             foreach (var score in prediction.Score)
             {
-                _logger.LogInformation($"Log-loss reduction score : {score}");
+                _logger.LogInformation($"Score : {score}");
             }
 
             // Retourne un JsonResult qui envoie la prédiction au client

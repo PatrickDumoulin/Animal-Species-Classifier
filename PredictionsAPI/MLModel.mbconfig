@@ -17,8 +17,8 @@
         "Version": 1,
         "Type": "Trial",
         "TrainerName": "ImageClassificationMulti",
-        "Score": -0.94013796891815726,
-        "RuntimeInSeconds": 154.054,
+        "Score": 0.77777777777777779,
+        "RuntimeInSeconds": 145.702,
         "Parameter": {
           "_SCHEMA_": "e0 * e1 * e2",
           "e0": {
@@ -47,7 +47,7 @@
       "e2": "MapKeyToValue"
     },
     "Schema": "e0 * e1 * e2",
-    "MetricName": "LogLossReduction",
+    "MetricName": "MicroAccuracy",
     "ModelFilePath": "C:\\Users\\Goglu\\source\\repos\\VeilleTechnoTP2V2\\PredictionsAPI\\MLModel.mlnet"
   },
   "Type": "TrainingConfig",
@@ -57,7 +57,7 @@
     "Subsampling": false,
     "Type": "ClassificationTrainingOption",
     "TrainingTime": 2147483647,
-    "OptimizeMetric": "LogLoss-Reduction",
+    "OptimizeMetric": "MicroAccuracy",
     "ValidationOption": {
       "Version": 0,
       "Type": "TrainValidateSplitValidationOption",
