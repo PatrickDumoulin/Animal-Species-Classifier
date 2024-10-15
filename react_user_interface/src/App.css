@@ -1,89 +1,102 @@
-/* App.css */
+/* Global Styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #edf2f7;
+  background-color: #0e0e0e;
   margin: 0;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  color: #f5f5f5;
 }
 
 h1 {
-  color: #2b2d42;
+  color: #f5f5f5;
   text-align: center;
   margin-bottom: 20px;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 div {
-  
   max-width: 500px;
   margin: auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  padding: 30px;
+  background-color: #1a1a1a;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.Prediction{
-  background-color: #fafafa;
+.Prediction {
+  background-color: #1a1a1a;
 }
 
 input[type="file"] {
   margin: 10px 0;
-  border: 1px solid #ddd;
-  padding: 10px;
-  border-radius: 5px;
+  border: 2px solid #3f51b5;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #282828;
+  color: #f5f5f5;
   width: 94%;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+  border-color: #f5f5f5;
+  background-color: #3f51b5;
+  color: #000;
 }
 
 button {
   background-color: #3f51b5;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 10px rgba(63, 81, 181, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
 }
 
 button:hover {
-  background-color: #1c1f4a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15);
+  background-color: #1e88e5;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(63, 81, 181, 0.5), 0 6px 10px rgba(0, 0, 0, 0.25);
 }
 
 button:active {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 10px rgba(63, 81, 181, 0.4), 0 5px 6px rgba(0, 0, 0, 0.15);
 }
 
 p {
-  color: #2b2d42;
+  color: #f5f5f5;
   font-size: 18px;
   margin-top: 20px;
+  line-height: 1.6;
 }
 
-/* Ajoutez des transitions pour les inputs lorsqu'ils sont actifs ou en focus */
+/* Input Focus and Active States */
 input[type="file"]:focus {
-  border-color: #3f51b5;
+  border-color: #1e88e5;
   outline: none;
 }
 
-/* Ajoutez un peu d'animation pour le texte de prédiction */
+/* Animated Text for Prediction Output */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(5px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -94,3 +107,9 @@ input[type="file"]:focus {
 p {
   animation: fadeIn 1s ease;
 }
+
+/* Add Glow Effect */
+button, input[type="file"] {
+  box-shadow: 0 0 10px #3f51b5, 0 0 40px rgba(63, 81, 181, 0.8);
+}
+
